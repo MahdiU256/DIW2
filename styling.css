@@ -124,3 +124,17 @@ body {background-color: var(--c1);}
     font-size: 3vh;
     font-weight: bold;
 }
+
+/* --------------------- Timer Styles --------------------- */
+#timer {
+    background-color: var(--c4);
+    display: block;
+    float: right;
+    margin: 15px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    box-shadow: 1px 1px 0 1px grey;
+    padding: 10px;
+    font-family: var(--m, serif);
+    font-size: 2vh;
+}
