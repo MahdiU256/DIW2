@@ -11,6 +11,8 @@
 
 body {background-color: var(--c1);}
 
+/* --------------------- Container Styles --------------------- */
+
 #container {
     display: block;
     background-color: var(--c2);
@@ -20,5 +22,42 @@ body {background-color: var(--c1);}
     border: 2px solid #888888;
     border-radius: 10px;
     box-shadow: 2px 2px 2px 2px #888888;
-    
+}
+
+/* --------------------- Alert Styles --------------------- */
+#alerts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px auto;
+    border-radius: 5px;
+    padding: 10px 50px;
+}
+
+.alerts {
+    display: block;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 7.5px;
+    box-shadow: 1px 2px 0 1px black;
+    font-family: var(--m, serif);
+    text-align: center;
+}
+
+#wrong {
+    background-color: #F00;
+    color: white;
+    visibility: hidden;
+}
+
+#score {
+    background-color: var(--c4);
+    color: grey;
+}
+
+#correct {
+    background-color: #0A0;
+    color: white;
+    visibility: hidden;
 }
