@@ -2,9 +2,23 @@
 
 :root {
     --c1: hsl(0, 10%, 90%);
-    --c2: hsl(0, 100%, 90%);
-    --c3: hsl(120, 100%, 90%);
-    --c4: hsl(240, 100%, 90%);
+    --c2: hsl(180, 100%, 90%);
+    --c3: hsl(330, 96%, 90%);
+    --c4: hsl(60, 100%, 90%);
     --pd: 'Playfair Display';
     --m: 'Merriweather';
+}
+
+body {background-color: var(--c1);}
+
+#container {
+    display: block;
+    background-color: var(--c2);
+    width: 750px;
+    height: 500px;
+    margin: 5% auto;
+    border: 2px solid #888888;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #888888;
+    
 }
