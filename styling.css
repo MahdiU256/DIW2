@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Playfair+Display&display=swap');
+
+:root {
+    --c1: hsl(0, 10%, 90%);
+    --c2: hsl(0, 100%, 90%);
+    --c3: hsl(120, 100%, 90%);
+    --c4: hsl(240, 100%, 90%);
+    --pd: 'Playfair Display';
+    --m: 'Merriweather';
+}
