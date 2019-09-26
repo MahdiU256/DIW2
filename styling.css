@@ -3,7 +3,7 @@
 :root {
     --c1: hsl(0, 10%, 90%);
     --c2: hsl(180, 100%, 90%);
-    --c3: hsl(330, 96%, 90%);
+    --c3: hsl(330, 100%, 90%);
     --c4: hsl(60, 100%, 90%);
     --pd: 'Playfair Display';
     --m: 'Merriweather';
@@ -78,4 +78,22 @@ body {background-color: var(--c1);}
     font-family: var(--pd, sans-serif);
     font-size: 8vh;
     font-weight: bold;
+}
+
+/* --------------------- Instructions Styles --------------------- */
+#instructions {
+    background-color: var(--c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    border: 1px solid grey;
+    border-radius: 5px;
+    box-shadow: 1px 1px 0 1px grey;
+    width: 90%;
+    height: 10vh;
+    font-family: var(--m, serif);
+    font-size: 3vh;
+    color: grey;
+    text-align: center;
 }
