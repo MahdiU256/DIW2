@@ -132,3 +132,20 @@ body {background-color: var(--c1);}
     top: 2px;
     left: 2px;
 }
+
+/* --------------------- Start Button Styles --------------------- */
+#start {
+    background-color: var(--c4);
+    color: grey;
+    display: block;
+    margin: 2vh auto;
+    border: 1px solid grey;
+    border-radius: 5px;
+    box-shadow: 1px 1px 0 1px grey;
+    padding: 5px;
+    font-family: var(--m, serif);
+    font-size: 3vh;
+}
+
+#start:hover {opacity: 0.8;}
+#start:active {opacity: 0.6;}
