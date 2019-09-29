@@ -96,6 +96,7 @@ body {background-color: var(--c1);}
     font-size: 3vh;
     color: grey;
     text-align: center;
+<<<<<<< HEAD
 }
 
 /* --------------------- Answers Styles --------------------- */
@@ -137,4 +138,6 @@ body {background-color: var(--c1);}
     padding: 10px;
     font-family: var(--m, serif);
     font-size: 2vh;
+=======
+>>>>>>> parent of ec318af... Answers Styles v1
 }
