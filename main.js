@@ -15,7 +15,7 @@ const answers = document.getElementById('answers');
 start.addEventListener('click', gameStart);
 
 // ans.addEventListener('click', correctAns);
-
+let ansObj = {ans1, ans2, ans3, ans4};
 // Function definitions
     
 function qAndAGen() {
@@ -38,7 +38,7 @@ function qAndAGen() {
 // Game Over
 function gameOver() {
     // Hide #question span
-    questions.style.display = 'none';
+    question.style.display = 'none';
     // Game Over!
     let gameOver = document.createElement('h1');
     let GOText = document.createTextNode('Game Over!');
@@ -46,28 +46,18 @@ function gameOver() {
     
     // Your score is: ...
     let finalScore = document.createElement('p');
-    let FSText = document.createTextNode('Your score is: 0.');
+    let FSText = document.createTextNode('Your score is: ');
     finalScore.appendChild(FSText);
-    
-    // GO div
-    let gDiv = document.createElement('div');
-    gDiv.appendChild(gameOver);
-    gDiv.appendChild(finalScore);
         
     // Style Game Over
     gameOver.style.fontFamily = 'var(--pd, serif)';
     gameOver.style.fontSize = '8vh';
     finalScore.style.fontFamily = 'var(--m, serif)';
     finalScore.style.fontSize = '3vh';
-    gDiv.style.backgroundColor = '#fd2222';
-    gDiv.style.display = 'flex';
-    gDiv.style.flexDirection = 'column';
-    gDiv.style.justifyContent = 'center';
-    gDiv.style.alignSelf = 'center';
-    gDiv.style.height = questions.style.height;
-        
-    // Place Game Over in the DOM
-    container.insertBefore(gDiv, instructions);
+    questions.style.backgroundColor = 'hsl(0, 100%, 60%)';
+
+    questions.appendChild(gameOver);
+    questions.appendChild(finalScore);
 }
 
 function gameStart() {
@@ -77,7 +67,7 @@ function gameStart() {
     start.addEventListener('click', gameReset);
     
     // Start timer
-    let t = 59;
+    let t = 60;
     let countdown = setInterval(timer, 1000);
     
     function timer() {
