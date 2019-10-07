@@ -8,6 +8,11 @@ const start = document.getElementById('start');
 const ans = document.getElementsByClassName('ans');
 const ansX = document.getElementById('ans' + ranNum);
 
+// Event listeners
+
+start.addEventListener('click', gameStart);
+ans.addEventListener('click', correctAns);
+
 // Plan:
 
 // Page Loads
@@ -28,7 +33,7 @@ const ansX = document.getElementById('ans' + ranNum);
     // A question is generated in the #question div (*1)
         // Any question from 1 times 1 to 10 times 10
     // Four answers are also generated in the .ans boxes
-        // 3 incorrect answers, 1 correct answers
+        // 3 incorrect answers, 1 correct answer
     // User clicks on an answer:
         // If answer is correct:
             // +1 to score count
