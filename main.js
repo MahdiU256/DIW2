@@ -24,6 +24,14 @@ ans.addEventListener('click', correctAns);
 
 // Function definitions
 
+function timer(x) {
+    x = 60;
+    while (x > 0) {
+        x--;
+        time.textContent = x;
+    }
+}
+
 function gameStart() {
     // Change start button to reset button
     start.innerText('Reset Game');
