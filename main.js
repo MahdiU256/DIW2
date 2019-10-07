@@ -9,71 +9,69 @@ const container = document.getElementById('container');
 const question = document.getElementById('question');
 const questions = document.getElementById('questions');
 const answers = document.getElementById('answers');
-const qX = Math.floor((Math.random() * 9) + 1);
-const qY = Math.floor((Math.random() * 9) + 1);
-const ans = document.getElementsByClassName('ans');
-const ansX = document.getElementById('ans' + ranNum);
+// const ans = document.getElementById(ansX);
 
 // Event listeners
-(start.textContent == 'Start Game') ? start.addEventListener('click', gameStart): start.addEventListener('click', gameReset);
+start.addEventListener('click', gameStart);
 
-ans.addEventListener('click', correctAns);
+// ans.addEventListener('click', correctAns);
 
 // Function definitions
-
-function timer(t) {
-    t = 60;
-    while (t > 0) {
-        t--;
-        time.textContent = t;
-    }
+    
+// Game Over
+function gameOver() {
+    // Hide #question span
+    questions.style.display = 'none';
+    // Game Over!
+    let gameOver = document.createElement('h1');
+    let GOText = document.createTextNode('Game Over!');
+    gameOver.appendChild(GOText);
+    
+    // Your score is: ...
+    let finalScore = document.createElement('p');
+    let FSText = document.createTextNode('Your score is: 0.');
+    finalScore.appendChild(FSText);
+    
+    // GO div
+    let gDiv = document.createElement('div');
+    gDiv.appendChild(gameOver);
+    gDiv.appendChild(finalScore);
+        
+    // Style Game Over
+    gameOver.style.fontFamily = 'var(--pd, serif)';
+    gameOver.style.fontSize = '8vh';
+    finalScore.style.fontFamily = 'var(--m, serif)';
+    finalScore.style.fontSize = '3vh';
+    gDiv.style.backgroundColor = '#fd2222';
+    gDiv.style.display = 'flex';
+    gDiv.style.flexDirection = 'column';
+    gDiv.style.justifyContent = 'center';
+    gDiv.style.alignSelf = 'center';
+    gDiv.style.height = questions.style.height;
+        
+    // Place Game Over in the DOM
+    container.insertBefore(gDiv, instructions);
 }
 
 function gameStart() {
     // Change start button to reset button
-    start.innerText('Reset Game');
-
+    start.textContent = 'Reset Game';
+    start.removeEventListener('click', gameStart);
+    start.addEventListener('click', gameReset);
+    
     // Start timer
+    let t = 59;
     let countdown = setInterval(timer, 1000);
-
-    // Generate question
-    question.textContent = qX + ' x ' + qY;
-
-    // Generate answers
-    aGen();
-
-    // Check if answer is correct
-    correctAns();
-
-    if (count.textContent == '0') {
-        // Stop timer
-        clearInterval(countdown);
-
-        // Hide #question span
-        questions.style.display = 'none';
-
-        // Create Game Over
-        let gameOver = document.createElement('h1');
-        let GOText = document.createTextNode('Game Over');
-        gameOver.appendChild(GOText);
-
-        let finalScore = document.createElement('p');
-        let FSText = document.createTextNode('Your score is: ' + count);
-        finalScore.appendChild(FSText);
-
-        let gDiv = document.createElement('div');
-        gDiv.appendChild(gameOver);
-        gDiv.appendChild(finalScore);
-
-        // Style Game Over
-        gameOver.style.fontSize = '4vh';
-        finalScore.style.fontSize = '2vh';
-        gDiv.style.backgroundColor = '#df2222';
-        gDiv.style.width = '90%';
-        
-        // Place Game Over in the DOM
-        container.insertBefore(gDiv, answers);
-    }
+    
+    function timer() {
+        if (t == -1) {
+            clearInterval(countdown);
+            gameOver();
+        } else {
+            time.textContent = t;
+            t--;
+        }
+    }        
 }
 
 function gameReset() {
