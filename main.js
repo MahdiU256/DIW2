@@ -1,6 +1,12 @@
 // main.js v0
 
+// Variable definitions
 
+const count = 0;
+const time = 60;
+const start = document.getElementById('start');
+const ans = document.getElementsByClassName('ans');
+const ansX = document.getElementById('ans' + ranNum);
 
 // Plan:
 
