@@ -2,16 +2,74 @@
 
 // Variable definitions
 
-const count = 0;
-const time = 60;
+const count = document.getElementById('count');
+const time = document.getElementById('time');
 const start = document.getElementById('start');
+const container = document.getElementById('container');
+const question = document.getElementById('question');
+const questions = document.getElementById('questions');
+const answers = document.getElementById('answers');
 const ans = document.getElementsByClassName('ans');
 const ansX = document.getElementById('ans' + ranNum);
 
 // Event listeners
+if (start.textContent == 'Start Game') {
+    return start.addEventListener('click', gameStart);
+} 
+if (start.textContent == 'Reset Game') {
+    return start.addEventListener('click', gameReset);
+}
 
-start.addEventListener('click', gameStart);
 ans.addEventListener('click', correctAns);
+
+// Function definitions
+
+function gameStart() {
+    // Change start button to reset button
+    start.innerText('Reset Game');
+
+    // Start timer
+    let countdown = setInterval(timer, 1000);
+
+    // Generate question
+    qGen();
+
+    // Generate answers
+    aGen();
+
+    // Check if answer is correct
+    correctAns();
+
+    if (count.textContent == '0') {
+        // Stop timer
+        clearInterval(countdown);
+
+        // Hide #question span
+        questions.style.display = 'none';
+
+        // Create Game Over
+        let gameOver = document.createElement('h1');
+        let GOText = document.createTextNode('Game Over');
+        gameOver.appendChild(GOText);
+
+        let finalScore = document.createElement('p');
+        let FSText = document.createTextNode('Your score is: ' + count);
+        finalScore.appendChild(FSText);
+
+        let gDiv = document.createElement('div');
+        gDiv.appendChild(gameOver);
+        gDiv.appendChild(finalScore);
+
+        // Style Game Over
+        gameOver.style.fontSize = '4vh';
+        finalScore.style.fontSize = '2vh';
+        gDiv.style.backgroundColor = '#df2222';
+        gDiv.style.width = '90%';
+        
+        // Place Game Over in the DOM
+        container.insertBefore(gDiv, answers);
+    }
+}
 
 // Plan:
 
@@ -46,4 +104,4 @@ ans.addEventListener('click', correctAns);
             // A new question is generated 
             // Repeat process from *1
     // When timer runs out:
-        // Display 'Game Over' with score count, telling user to click 'Reset Game' to try again.
+        // Display 'Game Over' with score count.
