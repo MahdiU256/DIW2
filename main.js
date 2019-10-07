@@ -9,6 +9,8 @@ const container = document.getElementById('container');
 const question = document.getElementById('question');
 const questions = document.getElementById('questions');
 const answers = document.getElementById('answers');
+const qX = Math.floor((Math.random() * 9) + 1);
+const qY = Math.floor((Math.random() * 9) + 1);
 const ans = document.getElementsByClassName('ans');
 const ansX = document.getElementById('ans' + ranNum);
 
@@ -40,7 +42,7 @@ function gameStart() {
     let countdown = setInterval(timer, 1000);
 
     // Generate question
-    qGen();
+    question.textContent = qX + ' x ' + qY;
 
     // Generate answers
     aGen();
