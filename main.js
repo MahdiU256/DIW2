@@ -71,6 +71,10 @@ function gameStart() {
     }
 }
 
+function gameReset() {
+    location.reload();
+}
+
 // Plan:
 
 // Page Loads
