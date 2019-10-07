@@ -15,22 +15,17 @@ const ans = document.getElementsByClassName('ans');
 const ansX = document.getElementById('ans' + ranNum);
 
 // Event listeners
-if (start.textContent == 'Start Game') {
-    return start.addEventListener('click', gameStart);
-} 
-if (start.textContent == 'Reset Game') {
-    return start.addEventListener('click', gameReset);
-}
+(start.textContent == 'Start Game') ? start.addEventListener('click', gameStart): start.addEventListener('click', gameReset);
 
 ans.addEventListener('click', correctAns);
 
 // Function definitions
 
-function timer(x) {
-    x = 60;
-    while (x > 0) {
-        x--;
-        time.textContent = x;
+function timer(t) {
+    t = 60;
+    while (t > 0) {
+        t--;
+        time.textContent = t;
     }
 }
 
