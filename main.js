@@ -18,6 +18,23 @@ start.addEventListener('click', gameStart);
 
 // Function definitions
     
+function qAndAGen() {
+    let qX = Math.floor((Math.random() * 9) + 1);
+    let qY = Math.floor((Math.random() * 9) + 1);
+    let aC = qX * qY;
+    let aW1 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
+    let aW2 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
+    let aW3 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
+
+    if (aW1 === aC || aW2 === aC || aW3 === aC) {
+        aW1 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
+        aW2 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
+        aW3 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
+    }
+
+    console.log(qX, qY, aC, aW1, aW2, aW3);
+}
+
 // Game Over
 function gameOver() {
     // Hide #question span
@@ -71,7 +88,9 @@ function gameStart() {
             time.textContent = t;
             t--;
         }
-    }        
+    }
+    
+    qAndAGen();
 }
 
 function gameReset() {
@@ -80,35 +99,39 @@ function gameReset() {
 
 // Plan:
 
-// Page Loads
-// Q: Has the game begun?
-    // If No:
-        // Click 'Start Game'
-        // Follow the steps from 'If Yes:'
-    // If Yes: 
-        // Play the game until Game Over (Refer to Game Logic)
-        // Click 'Reset Game'
-        // Window reloads
-        // Back to beginning
+// Done:
+    // Page Loads
+    // Q: Has the game begun?
+        // If No:
+            // Click 'Start Game'
+            // Follow the steps from 'If Yes:'
+        // If Yes: 
+            // Play the game until Game Over (Refer to Game Logic)
+            // Click 'Reset Game'
+            // Window reloads
+            // Back to beginning
 
 // Game Logic
 // The game begins:
     // #start div content changes from 'Start Game' to 'Reset Game'
     // Timer starts counting down from 60 to 0
-    // A question is generated in the #question div (*1)
-        // Any question from 1 times 1 to 10 times 10
-    // Four answers are also generated in the .ans boxes
-        // 3 incorrect answers, 1 correct answer
-    // User clicks on an answer:
-        // If answer is correct:
-            // +1 to score count
-            // #correct div is visible for 1 second
-            // A new question is generated 
-            // Repeat process from *1
-        // If answer is incorrect: 
-            // +0 to score count
-            // #wrong div is visible for 1 second
-            // A new question is generated 
-            // Repeat process from *1
+        // INCOMPLETE SECTION //
     // When timer runs out:
         // Display 'Game Over' with score count.
+
+// Tasks Left:
+        // A question is generated in the #question div (*1)
+            // Any question from 1 times 1 to 10 times 10
+        // Four answers are also generated in the .ans boxes
+            // 3 incorrect answers, 1 correct answer
+        // User clicks on an answer:
+            // If answer is correct:
+                // +1 to score count
+                // #correct div is visible for 1 second
+                // A new question is generated 
+                // Repeat process from *1
+            // If answer is incorrect: 
+                // +0 to score count
+                // #wrong div is visible for 1 second
+                // A new question is generated 
+                // Repeat process from *1
