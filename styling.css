@@ -164,8 +164,8 @@ body {background-color: var(--c1);}
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 2vh auto;
-    width: 50vw;
+    margin: 2vw auto;
+    width: 80%;
 }
 
 /* --------------------- Start Button Styles --------------------- */
