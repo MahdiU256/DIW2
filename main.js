@@ -1,38 +1,81 @@
-// main.js v0
+// main.js
 
 // Variable definitions
 
+// Selectors
 const count = document.getElementById('count');
 const time = document.getElementById('time');
 const start = document.getElementById('start');
-const container = document.getElementById('container');
+const correct = document.getElementById('correct');
+const wrong = document.getElementById('wrong');
 const question = document.getElementById('question');
 const questions = document.getElementById('questions');
 const answers = document.getElementById('answers');
-// const ans = document.getElementById(ansX);
+const ans1 = document.getElementById('ans1');
+const ans2 = document.getElementById('ans2');
+const ans3 = document.getElementById('ans3');
+const ans4 = document.getElementById('ans4');
+
+// Numbers
+
+// Questions
+let qX = Math.floor((Math.random() * 9) + 1);
+let qY = Math.floor((Math.random() * 9) + 1);
+// Correct answer
+let aC = qX * qY;
+// Wrong answers
+let aW1 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
+let aW2 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
+let aW3 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
 
 // Event listeners
 start.addEventListener('click', gameStart);
 
-// ans.addEventListener('click', correctAns);
-let ansObj = {ans1, ans2, ans3, ans4};
 // Function definitions
+
+// Question and Answer generator
     
 function qAndAGen() {
-    let qX = Math.floor((Math.random() * 9) + 1);
-    let qY = Math.floor((Math.random() * 9) + 1);
-    let aC = qX * qY;
-    let aW1 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
-    let aW2 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
-    let aW3 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
+    qX = Math.floor((Math.random() * 9) + 1);
+    qY = Math.floor((Math.random() * 9) + 1);
+    aC = qX * qY;
+    aW1 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
+    aW2 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
+    aW3 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
+    // Show question
+    question.textContent = qX + ' x ' + qY;
 
+    // If wrong answer(s) = right answer, generate a new number.
     if (aW1 === aC || aW2 === aC || aW3 === aC) {
         aW1 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
         aW2 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
         aW3 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
     }
 
-    console.log(qX, qY, aC, aW1, aW2, aW3);
+    // Generate random index (to select where the correct answer goes)
+    let rIndex = Math.floor(Math.random() * 4);
+
+    if (rIndex === 0) { 
+        ans1.textContent = aC;
+        ans2.textContent = aW1;
+        ans3.textContent = aW2;
+        ans4.textContent = aW3;
+    } else if (rIndex === 1) {
+        ans1.textContent = aW1;
+        ans2.textContent = aC;
+        ans3.textContent = aW2;
+        ans4.textContent = aW3;
+    } else if (rIndex === 2) {
+        ans1.textContent = aW1;
+        ans2.textContent = aW2;
+        ans3.textContent = aC;
+        ans4.textContent = aW3;
+    } else if (rIndex === 3) {
+        ans1.textContent = aW1;
+        ans2.textContent = aW2;
+        ans3.textContent = aW3;
+        ans4.textContent = aC;
+    }
 }
 
 // Game Over
@@ -46,7 +89,7 @@ function gameOver() {
     
     // Your score is: ...
     let finalScore = document.createElement('p');
-    let FSText = document.createTextNode('Your score is: ');
+    let FSText = document.createTextNode('Your score is: ' + count.textContent);
     finalScore.appendChild(FSText);
         
     // Style Game Over
@@ -60,6 +103,7 @@ function gameOver() {
     questions.appendChild(finalScore);
 }
 
+// Main game function
 function gameStart() {
     // Change start button to reset button
     start.textContent = 'Reset Game';
@@ -67,7 +111,7 @@ function gameStart() {
     start.addEventListener('click', gameReset);
     
     // Start timer
-    let t = 60;
+    let t = 59;
     let countdown = setInterval(timer, 1000);
     
     function timer() {
@@ -83,6 +127,7 @@ function gameStart() {
     qAndAGen();
 }
 
+// Reset the Game
 function gameReset() {
     location.reload();
 }
@@ -105,15 +150,15 @@ function gameReset() {
 // The game begins:
     // #start div content changes from 'Start Game' to 'Reset Game'
     // Timer starts counting down from 60 to 0
-        // INCOMPLETE SECTION //
+    // A question is generated in the #question div (*1)
+        // Any question from 1 times 1 to 10 times 10
+    // Four answers are also generated in the .ans boxes
+        // 3 incorrect answers, 1 correct answer
+    // INCOMPLETE SECTION //
     // When timer runs out:
         // Display 'Game Over' with score count.
 
 // Tasks Left:
-        // A question is generated in the #question div (*1)
-            // Any question from 1 times 1 to 10 times 10
-        // Four answers are also generated in the .ans boxes
-            // 3 incorrect answers, 1 correct answer
         // User clicks on an answer:
             // If answer is correct:
                 // +1 to score count
