@@ -1,4 +1,4 @@
-/* --------------------- styling.css v1.0.1 --------------------- */
+/* --------------------- styling.css v1.0.4 --------------------- */
 @import url('https://fonts.googleapis.com/css?family=Merriweather|Playfair+Display&display=swap');
 
 :root {
@@ -10,7 +10,7 @@
     --m: 'Merriweather';
 }
 
-body {background-color: var(--c1);}
+body {background-color: var(--c1); margin: 0px;}
 
 /* --------------------- Container Styles --------------------- */
 
@@ -76,6 +76,7 @@ body {background-color: var(--c1);}
 #questions {
     background-color: var(--c3);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 10px auto;
