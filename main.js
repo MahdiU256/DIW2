@@ -27,6 +27,8 @@ let aC = qX * qY;
 let aW1 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
 let aW2 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
 let aW3 = Math.floor((Math.random() * 9) + 1) * Math.floor((Math.random() * 9) + 1);
+// Score
+let score = 0;
 
 // Event listeners
 start.addEventListener('click', gameStart);
@@ -76,12 +78,51 @@ function qAndAGen() {
         ans3.textContent = aW3;
         ans4.textContent = aC;
     }
+
+    // Add event listener to check answers
+    answers.addEventListener('click', correctAns);
+}
+
+// Answer checker
+function correctAns(e) {
+    console.log(e);
+    let evTrig = e.target.textContent;
+    if (evTrig == aC) {
+        // Score +1
+        score++;
+        count.textContent = score;
+        console.log(score);
+        
+        // #correct div is visible for 1 second
+        correct.style.visibility = 'visible';
+        setTimeout(function() { correct.style.visibility = 'hidden'; }, 1000)
+    
+        // Remove the event listener
+        answers.removeEventListener('click', correctAns);
+
+        // run Q&A generator again
+        qAndAGen();
+    } else {
+        // #wrong div is visible for 1 second
+        wrong.style.visibility = 'visible';
+        setTimeout(function() { wrong.style.visibility = 'hidden'; }, 1000);
+        
+        // Remove the event listener
+        answers.removeEventListener('click', correctAns);
+
+        // run Q&A generator again
+        qAndAGen();
+    }
 }
 
 // Game Over
 function gameOver() {
     // Hide #question span
     question.style.display = 'none';
+
+    // Remove event listener
+    answers.removeEventListener('click', correctAns);
+
     // Game Over!
     let gameOver = document.createElement('h1');
     let GOText = document.createTextNode('Game Over!');
@@ -89,7 +130,7 @@ function gameOver() {
     
     // Your score is: ...
     let finalScore = document.createElement('p');
-    let FSText = document.createTextNode('Your score is: ' + count.textContent);
+    let FSText = document.createTextNode('Your score is: ' + count.textContent + '!');
     finalScore.appendChild(FSText);
         
     // Style Game Over
@@ -108,8 +149,8 @@ function gameStart() {
     // Change start button to reset button
     start.textContent = 'Reset Game';
     start.removeEventListener('click', gameStart);
-    start.addEventListener('click', gameReset);
-    
+    start.addEventListener('click', gameReset);    
+
     // Start timer
     let t = 59;
     let countdown = setInterval(timer, 1000);
@@ -134,7 +175,6 @@ function gameReset() {
 
 // Plan:
 
-// Done:
     // Page Loads
     // Q: Has the game begun?
         // If No:
@@ -154,19 +194,18 @@ function gameReset() {
         // Any question from 1 times 1 to 10 times 10
     // Four answers are also generated in the .ans boxes
         // 3 incorrect answers, 1 correct answer
-    // INCOMPLETE SECTION //
+    // User clicks on an answer:
+        // If answer is correct:
+            // +1 to score count
+            // #correct div is visible for 1 second
+            // A new question is generated 
+            // Repeat process from *1
+        // If answer is incorrect: 
+            // +0 to score count
+            // #wrong div is visible for 1 second
+            // A new question is generated 
+            // Repeat process from *1
     // When timer runs out:
         // Display 'Game Over' with score count.
 
-// Tasks Left:
-        // User clicks on an answer:
-            // If answer is correct:
-                // +1 to score count
-                // #correct div is visible for 1 second
-                // A new question is generated 
-                // Repeat process from *1
-            // If answer is incorrect: 
-                // +0 to score count
-                // #wrong div is visible for 1 second
-                // A new question is generated 
-                // Repeat process from *1
+// GAME FUNCTIONALITY COMPLETE -> main.js v1.0.0
