@@ -1,4 +1,4 @@
-/* --------------------- styling.css v1.0.4 --------------------- */
+/* --------------------- styling.css v1.0.5 --------------------- */
 @import url('https://fonts.googleapis.com/css?family=Merriweather|Playfair+Display&display=swap');
 
 :root {
@@ -19,7 +19,7 @@ body {background-color: var(--c1); margin: 0px;}
     background-color: var(--c2);
     width: 90vmin;
     height: 90vh;
-    margin: 2.5% auto;
+    margin: 25px auto;
     border: 2px solid #888888;
     border-radius: 10px;
     box-shadow: 2px 2px 2px 2px #888888;
